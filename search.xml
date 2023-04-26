@@ -192,6 +192,19 @@
     
     
     <entry>
+      <title>[网鼎杯 2020 半决赛]AliceWebsite</title>
+      <link href="/2023/04/buu_web/%E7%AC%AC%E4%B8%89%E9%A1%B5/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E5%8D%8A%E5%86%B3%E8%B5%9B-AliceWebsite/"/>
+      <url>/2023/04/buu_web/%E7%AC%AC%E4%B8%89%E9%A1%B5/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E5%8D%8A%E5%86%B3%E8%B5%9B-AliceWebsite/</url>
+      
+        <content type="html"><![CDATA[<p>文件包含</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">include</span><br><span class="line">data协议不行</span><br><span class="line">input也不行</span><br><span class="line">无语，直接遍历包含。</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ctfshowweb1000</title>
       <link href="/2023/04/ctfshow/web/ctfshowweb1000/"/>
       <url>/2023/04/ctfshow/web/ctfshowweb1000/</url>
@@ -381,7 +394,7 @@
     
     
     <entry>
-      <title>网鼎杯2018]Unfinish</title>
+      <title>[网鼎杯2018]Unfinish</title>
       <link href="/2023/02/buu_web/%E7%AC%AC%E4%B8%89%E9%A1%B5/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/"/>
       <url>/2023/02/buu_web/%E7%AC%AC%E4%B8%89%E9%A1%B5/%E7%BD%91%E9%BC%8E%E6%9D%AF2018-Unfinish/</url>
       
@@ -845,9 +858,9 @@
       
         <tags>
             
-            <tag> pickle反序列化 </tag>
-            
             <tag> buu </tag>
+            
+            <tag> pickle反序列化 </tag>
             
         </tags>
       
